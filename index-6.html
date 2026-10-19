@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="SmartZone — a colourful learning hub for curious minds.">
+<title>SmartZone | Learn Something Amazing</title>
+<style>
+:root{--ink:#20213a;--muted:#686982;--purple:#7457ff;--pink:#ff5fa2;--orange:#ff9b54;--line:#ece9f7;--bg:#faf9ff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:var(--bg)}a{color:inherit;text-decoration:none}button,input{font:inherit}button{cursor:pointer}
+.topline{padding:9px 16px;text-align:center;color:#fff;background:linear-gradient(90deg,#6b4dff,#d34fce,#ff875b);font-size:.86rem;font-weight:700}
+header{position:sticky;top:0;z-index:10;background:#ffffffed;backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{width:min(1160px,calc(100% - 36px));min-height:72px;margin:auto;display:flex;align-items:center;gap:28px}
+.logo{display:inline-flex;align-items:center;gap:10px;font-weight:950;font-size:1.55rem;letter-spacing:-1px;white-space:nowrap;color:#15152b}.logo .logo-mark{display:inline-grid;place-items:center;width:39px;height:39px;border-radius:12px;color:#35f2ff;background:linear-gradient(145deg,#17162f,#090a18);border:1px solid #35f2ff;box-shadow:0 0 10px #35f2ff75,inset 0 0 10px #35f2ff22}.logo .logo-mark svg{width:23px;height:23px;filter:drop-shadow(0 0 4px #35f2ff)}.logo .logo-word{color:#111329}.logo .logo-word span{color:#d934c9;text-shadow:0 0 10px #ff65d466}
+.navlinks{display:flex;gap:23px;margin-left:auto;font-weight:650;font-size:.93rem}.navlinks a:hover{color:var(--purple)}
+.nav-cta,.btn{display:inline-flex;justify-content:center;align-items:center;gap:8px;padding:12px 17px;border:0;border-radius:13px;font-weight:800}
+.nav-cta,.btn.primary{color:white;background:linear-gradient(100deg,var(--purple),#b24bdf,var(--pink));box-shadow:0 8px 22px #8662ff35}
+main{overflow:hidden}
+.hero-wrap{padding:34px 0 18px}.hero{position:relative;overflow:hidden;width:min(1160px,calc(100% - 36px));margin:auto;min-height:400px;padding:clamp(28px,6vw,72px);display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:24px;border-radius:32px;color:white;background:linear-gradient(120deg,#5549e9,#a44ce5 52%,#ff729e);box-shadow:0 24px 55px #8a5bdf30}
+.hero:before,.hero:after{content:"";position:absolute;border-radius:50%;background:#ffffff17}.hero:before{width:350px;height:350px;right:4%;top:-190px}.hero:after{width:240px;height:240px;right:-70px;bottom:-130px}
+.pill{display:inline-block;padding:8px 12px;border:1px solid #ffffff55;border-radius:99px;background:#ffffff17;font-size:.82rem;font-weight:800}
+.hero h1{font-size:clamp(2.6rem,5.5vw,4.6rem);line-height:1;letter-spacing:-2.5px;margin:19px 0}.hero p{max-width:490px;color:#ffffffdf;line-height:1.75;font-size:1.05rem}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}.btn.primary{background:#fff;color:#6548e8;box-shadow:none}.btn.secondary{background:#ffffff20;color:white;border:1px solid #ffffff65}.hero-art{z-index:1;display:grid;place-items:center;min-height:230px}.hero-art .big-emoji{font-size:clamp(8rem,18vw,13rem);filter:drop-shadow(0 24px 14px #38156d35);animation:float 4s ease-in-out infinite}.floaties{position:absolute;z-index:1;font-size:2.5rem;animation:float 5s ease-in-out infinite}.floaties.one{right:32%;top:15%}.floaties.two{right:7%;bottom:18%;animation-delay:1s}@keyframes float{0%,100%{transform:translateY(0) rotate(-5deg)}50%{transform:translateY(-12px) rotate(5deg)}}
+.wrap{width:min(1160px,calc(100% - 36px));margin:0 auto 66px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:22px auto 55px}.stat{padding:18px;border:1px solid var(--line);border-radius:18px;background:white;display:flex;gap:13px;align-items:center}.stat-icon{width:46px;height:46px;flex-shrink:0;border-radius:15px;display:grid;place-items:center;font-size:1.45rem;background:linear-gradient(135deg,#eee8ff,#ffe4f0)}.stat strong{display:block;font-size:1.1rem}.stat small{display:block;color:var(--muted);margin-top:3px}
+.heading{display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:23px}.heading h2{font-size:clamp(1.8rem,3.5vw,2.5rem);letter-spacing:-1px;margin:0}.heading p{margin:8px 0 0;color:var(--muted);line-height:1.5}.subject-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.subject{padding:22px;border:1px solid var(--line);border-radius:22px;background:white;transition:transform .2s,box-shadow .2s}.subject:hover{transform:translateY(-5px);box-shadow:0 16px 35px #2d1d5a12}.subject-icon{height:100px;border-radius:17px;display:grid;place-items:center;font-size:3.5rem;background:linear-gradient(135deg,var(--c1),var(--c2))}.subject h3{margin:17px 0 8px}.subject p{min-height:48px;margin:0;color:var(--muted);font-size:.9rem;line-height:1.6}.subject a{display:inline-block;margin-top:15px;color:var(--purple);font-weight:800;font-size:.9rem}
+.featured{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:stretch}.feature-card{padding:clamp(23px,4vw,38px);border-radius:26px;background:white;border:1px solid var(--line)}.feature-card.gradient{color:white;background:linear-gradient(135deg,#ff985c,#ff5f9d 60%,#a15cff);border:0}.feature-card h2{font-size:clamp(1.6rem,3vw,2.2rem);letter-spacing:-1px;margin:0 0 12px}.feature-card p{line-height:1.7;color:var(--muted)}.feature-card.gradient p{color:#ffffffdf}.feature-card .btn{margin-top:12px}.checklist{list-style:none;padding:0;margin:22px 0 0;display:grid;gap:14px}.checklist li{display:flex;gap:10px;align-items:flex-start;line-height:1.5}.check{display:grid;place-items:center;flex-shrink:0;width:25px;height:25px;border-radius:50%;background:#e8e2ff;color:#6548e8;font-weight:900}
+.quiz{margin-top:22px;padding:24px;border-radius:22px;background:#f7f3ff;border:1px solid #e8e0ff}.quiz h3{margin:0 0 10px}.quiz p{margin:0 0 15px;color:var(--muted)}.quiz-options{display:flex;flex-wrap:wrap;gap:10px}.quiz-options button{padding:10px 15px;border:1px solid #ddd4ff;border-radius:12px;background:white;font-weight:700}.quiz-options button:hover{border-color:var(--purple);color:var(--purple)}#quizFeedback{min-height:24px;margin-top:14px;font-weight:750}
+footer{padding:36px 18px;background:#20213a;color:#d9d8eb}.footer-inner{width:min(1160px,100%);margin:auto;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}.footer-inner p{max-width:400px;color:#aaa9c2;line-height:1.7;font-size:.9rem}.footer-links{display:flex;gap:20px;align-items:center;flex-wrap:wrap}.footer-links a:hover{color:#ff8ab8}.copyright{color:#aaa9c2;font-size:.85rem;line-height:1.7}
+@media(max-width:900px){.subject-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{grid-template-columns:1fr .65fr}.nav{gap:16px}.navlinks{gap:13px}}
+@media(max-width:650px){.nav{width:calc(100% - 24px);min-height:66px;gap:12px;flex-wrap:wrap;padding:11px 0}.logo{font-size:1.35rem}.navlinks{order:3;flex-basis:100%;justify-content:space-between;padding:5px 0 7px;font-size:.88rem}.nav-cta{margin-left:auto;padding:10px 12px;font-size:.86rem}.hero-wrap{padding-top:18px}.hero{width:calc(100% - 24px);grid-template-columns:1fr;padding:31px 24px;border-radius:24px;min-height:0}.hero h1{letter-spacing:-1.8px}.hero-art{min-height:125px}.hero-art .big-emoji{font-size:7rem}.floaties.one{right:20%;top:auto;bottom:15%}.floaties.two{right:10%;bottom:7%}.wrap{width:calc(100% - 24px);margin-bottom:48px}.stats{grid-template-columns:1fr;margin:18px auto 44px}.stat{padding:14px}.heading{align-items:flex-start;flex-direction:column}.subject-grid{gap:12px}.subject{padding:13px;border-radius:17px}.subject-icon{height:82px;font-size:2.8rem}.subject h3{font-size:1rem;margin-top:13px}.subject p{font-size:.84rem;min-height:66px}.subject a{font-size:.83rem}.featured{grid-template-columns:1fr}.feature-card{border-radius:22px}.quiz{padding:18px}}
+@media(max-width:360px){.subject-grid{grid-template-columns:1fr}.subject p{min-height:0}.subject-icon{height:110px}.hero .actions .btn{width:100%}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+
+/* Opening welcome screen */
+.welcome-screen{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;padding:24px;background:linear-gradient(135deg,#654bff 0%,#d64fca 52%,#ff9860 100%);transition:opacity .45s ease,visibility .45s ease}
+.welcome-screen.hidden{opacity:0;visibility:hidden;pointer-events:none}
+.welcome-card{width:min(520px,100%);padding:clamp(28px,6vw,52px);border:1px solid #ffffff80;border-radius:30px;background:#ffffffef;box-shadow:0 28px 90px #26145c55;text-align:center}
+.welcome-mark{width:76px;height:76px;margin:0 auto 18px;display:grid;place-items:center;border-radius:24px;color:#fff;font-size:2.2rem;background:linear-gradient(135deg,#7457ff,#ff5fa2);box-shadow:0 12px 28px #7457ff40}
+.welcome-card h1{margin:0 0 10px;font-size:clamp(2rem,7vw,3.1rem);line-height:1.05;letter-spacing:-1.5px}
+.welcome-card p{margin:12px 0 25px;color:#686982;line-height:1.6}
+.creator-credit{display:inline-block;margin-top:8px;padding:8px 13px;border-radius:999px;background:#f0edff;color:#6348df;font-weight:800;font-size:.95rem}
+.welcome-start{border:0;border-radius:14px;padding:14px 24px;color:white;font-weight:800;background:linear-gradient(100deg,#7457ff,#d34fce);box-shadow:0 10px 24px #7457ff35}
+.welcome-start:hover{transform:translateY(-1px)}
+@media(prefers-reduced-motion:reduce){.welcome-screen{transition:none}}
+
+</style>
+</head>
+<body>
+
+<div class="welcome-screen" id="welcomeScreen" role="dialog" aria-modal="true" aria-labelledby="welcomeTitle">
+  <div class="welcome-card">
+    <div class="welcome-mark" aria-hidden="true">✦</div>
+    <h1 id="welcomeTitle">Welcome to SmartZone!</h1>
+    <p>A colourful place to explore, learn, and discover something amazing.</p>
+    <div class="creator-credit">Created by Adith. A</div>
+    <p><button class="welcome-start" id="welcomeStart" type="button">Start Learning →</button></p>
+  </div>
+</div>
+
+<div class="topline">🌟 Keep asking questions. Keep discovering new things!</div>
+<header>
+  <nav class="nav" aria-label="Main navigation">
+    <a class="logo" href="#" aria-label="SmartZone home"><span class="logo-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.8 14.5 9.5 21.2 12 14.5 14.5 12 21.2 9.5 14.5 2.8 12 9.5 9.5 12 2.8Z"/><circle cx="12" cy="12" r="2.2"/><path d="M18.5 3.5v3M17 5h3"/></svg></span><span class="logo-word">Smart<span>Zone</span></span></a>
+    <div class="navlinks"><a href="#subjects">Subjects</a><a href="#study-tips">Study tips</a><a href="#quiz">Quick quiz</a></div>
+    <a class="nav-cta" href="#subjects">Start learning →</a>
+  </nav>
+</header>
+<main>
+  <section class="hero-wrap">
+    <div class="hero">
+      <span class="floaties one" aria-hidden="true">✏️</span><span class="floaties two" aria-hidden="true">⭐</span>
+      <div>
+        <span class="pill">A LITTLE LEARNING, EVERY DAY</span>
+        <h1>Curiosity makes<br>you brighter.</h1>
+        <p>Explore subjects, build clever habits, and discover how much fun learning can be. Your next big idea starts here!</p>
+        <div class="actions"><a class="btn primary" href="#subjects">Explore subjects <span>→</span></a><a class="btn secondary" href="#quiz">Try a quick quiz ✨</a></div>
+      </div>
+      <div class="hero-art" aria-hidden="true"><div class="big-emoji">📚</div></div>
+    </div>
+  </section>
+
+  <section class="wrap stats" aria-label="Learning highlights">
+    <div class="stat"><div class="stat-icon">🧠</div><div><strong>Stay curious</strong><small>Ask questions and explore</small></div></div>
+    <div class="stat"><div class="stat-icon">🎯</div><div><strong>Learn by doing</strong><small>Small steps make progress</small></div></div>
+    <div class="stat"><div class="stat-icon">🌈</div><div><strong>Enjoy the journey</strong><small>Every learner can grow</small></div></div>
+  </section>
+
+  <section class="wrap" id="subjects">
+    <div class="heading"><div><h2>Choose your adventure 📖</h2><p>Pick a subject and begin exploring.</p></div></div>
+    <div class="subject-grid">
+      <article class="subject" style="--c1:#e2dcff;--c2:#ffd9ed"><div class="subject-icon">🔬</div><h3>Science</h3><p>Discover nature, space, energy, and how things work.</p><a href="#study-tips">Explore science →</a></article>
+      <article class="subject" style="--c1:#d6f7ff;--c2:#d9e3ff"><div class="subject-icon">➗</div><h3>Mathematics</h3><p>Practice numbers, patterns, shapes, and problem-solving.</p><a href="#quiz">Try a quiz →</a></article>
+      <article class="subject" style="--c1:#fff0c9;--c2:#ffd9d0"><div class="subject-icon">🌍</div><h3>Geography</h3><p>Travel across continents, oceans, climates, and cultures.</p><a href="#study-tips">Explore geography →</a></article>
+      <article class="subject" style="--c1:#d9f8e9;--c2:#e2ddff"><div class="subject-icon">📚</div><h3>Languages</h3><p>Grow your vocabulary and communicate with confidence.</p><a href="#study-tips">Explore languages →</a></article>
+    </div>
+  </section>
+
+  <section class="wrap featured" id="study-tips">
+    <article class="feature-card gradient">
+      <span class="pill">YOUR STUDY BOOST</span>
+      <h2>Make study time work for you 🚀</h2>
+      <p>You don't have to learn everything at once. A simple routine can help you understand and remember more.</p>
+      <ul class="checklist">
+        <li><span class="check">✓</span><span>Study in short, focused sessions.</span></li>
+        <li><span class="check">✓</span><span>Explain a new idea in your own words.</span></li>
+        <li><span class="check">✓</span><span>Take breaks and get enough sleep.</span></li>
+      </ul>
+    </article>
+    <article class="feature-card">
+      <h2>Small steps, big progress 🌱</h2>
+      <p>Try this mini learning plan whenever you sit down to study.</p>
+      <ul class="checklist">
+        <li><span class="check">1</span><span><strong>Review:</strong> Remember what you learned last time.</span></li>
+        <li><span class="check">2</span><span><strong>Explore:</strong> Learn one new concept.</span></li>
+        <li><span class="check">3</span><span><strong>Practice:</strong> Answer a question without looking at your notes.</span></li>
+        <li><span class="check">4</span><span><strong>Reflect:</strong> Notice what you understand and what to revisit.</span></li>
+      </ul>
+    </article>
+  </section>
+
+  <section class="wrap" id="quiz">
+    <div class="heading"><div><h2>Quick brain break 🧩</h2><p>One question to test your knowledge. Choose an answer!</p></div></div>
+    <div class="quiz">
+      <h3>Which planet is known as the Red Planet?</h3>
+      <p>Choose one option below.</p>
+      <div class="quiz-options">
+        <button type="button" data-answer="Venus">Venus</button>
+        <button type="button" data-answer="Mars">Mars</button>
+        <button type="button" data-answer="Jupiter">Jupiter</button>
+        <button type="button" data-answer="Mercury">Mercury</button>
+      </div>
+      <div id="quizFeedback" aria-live="polite"></div>
+    </div>
+  </section>
+</main>
+<footer>
+  <div class="footer-inner">
+    <div><a class="logo" href="#" style="color:white">Smart<span>Zone</span> ✦</a><p>A colourful learning hub for curious minds. Keep exploring, keep practicing, and keep growing.</p></div>
+    <div class="footer-links"><a href="#subjects">Subjects</a><a href="#study-tips">Study tips</a><a href="#quiz">Quick quiz</a></div>
+    <div class="copyright">© 2026 SmartZone<br>Educational website demo</div>
+  </div>
+</footer>
+<script>
+const feedback = document.getElementById("quizFeedback");
+document.querySelectorAll("[data-answer]").forEach(button => {
+  button.addEventListener("click", () => {
+    const correct = button.dataset.answer === "Mars";
+    feedback.textContent = correct ? "🎉 Correct! Mars looks reddish because of iron-rich dust on its surface." : "Almost! Try again — think of the planet named after the Roman god of war.";
+    feedback.style.color = correct ? "#21835a" : "#b34d77";
+  });
+});
+</script>
+
+<script>
+(function(){
+  const screen = document.getElementById('welcomeScreen');
+  const start = document.getElementById('welcomeStart');
+  if (screen && start) {
+    start.addEventListener('click', function(){
+      screen.classList.add('hidden');
+      window.setTimeout(function(){ screen.remove(); }, 500);
+    });
+    start.focus({preventScroll:true});
+  }
+})();
+</script>
+
+</body>
+</html>
